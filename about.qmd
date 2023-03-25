@@ -1,0 +1,5 @@
+I'm currently a senior bioinformatician at Sydney Informatics Hub, at the University of Sydney. I directly support the University's life science research community by processing and analysing researcher's data, supporting access to national high performance and cloud computing platforms, and consult on reproducible research practices and best practice bioinformatics. 
+
+I am also involved in the Australian BioCommon 'Bring Your Own Data' command line interface project, building and supporting the use of reproducible and scalable workflows. I am passionate about making bioinformatics more approachable and accessible for all life scientists. 
+
+Previously, I did my PhD under the supervision of Associate Professor Bianca Waud and Professor Claire Wade, at the Unviersity of Sydney. I explored the application and adaptation of genomic techniques and technologies to heritable diseases, population structure, and conservation in cat species. 

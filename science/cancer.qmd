@@ -1,0 +1,24 @@
+---
+title: "Precision diagnostics in cancer"
+image: ../figs/Cancer.jpg
+---
+
+Whole-genome profiling of somatic mutations allows researchers to develop new insights into the underlying causes of cancers and develop new treatments and prevention strategies. However, genetic profiling of poorly understood cancers can be challenging due to the complexity and heterogeneity of somatic mutations across patient populations, and lacking population-level data. Best practice bioinformatics workflows that provide a standardised approach to somatic mutation identification and annotation can address these challenges and provide clinicians with viable treatment targets. 
+
+#### My role
+
+* Identified and implemented best practice bioinformatic tools and public datasets
+* Implemented 2 best pratice workflows to provide patient reports and identify short and structural variants in a cohort of thyroid cancer patients 
+* Identified candidate genes for poorly differentiated thyroid cancer 
+
+#### Outcomes
+
+* Workflow under development 
+* Results under embargo
+
+#### Skills 
+
+* Data analysis, project management, verbal and written communication
+* Disciplines: cancer genetics, genomics, bioinformatics
+* Platforms: HPC, cloud, RStudio  
+* Tools: bash, R, python, Nextflow, PBS, git, GitHub

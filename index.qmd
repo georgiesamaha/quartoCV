@@ -1,0 +1,7 @@
+---
+image: "https://user-images.githubusercontent.com/73086054/224530266-7c58a07c-6969-4731-b9d1-bc1b5cbdace3.png"
+about:
+  template: jolla
+---
+
+I'm a community-focused bioinformatician, working on improving the accessibility of bioinformatics for all life scientists. I prioritise the importance of inter-disciplinary collaboration, effective communication, and transparency in achieving this. I maintain a complementary research practice in animal genomics, with a focus on improving health and conservation outcomes in companion animals and non-model species. 
