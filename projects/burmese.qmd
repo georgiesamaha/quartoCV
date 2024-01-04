@@ -1,0 +1,30 @@
+---
+title: "Feline models of complex human disease"
+image: ../figs/Burmese.jpg
+---
+
+Cat breeds can serve as informative natural genetic models of human disease because of their similarity to humans in terms of genetics, anatomy, physiology, and our shared environment. By studying cat breeds with a high prevalence of a hertiable disease, like feline diabetes mellitus (FDM) in Burmese cats, we can gain insights into the underlying genetic mechanisms of the diseases. 
+
+For this project, we explored the genetic landscape of FDM in a population of Australian and European Burmese cats. We used multiple techniques and technologies to identify regions of disease association and selection in affected cats. 
+
+#### My role
+
+* Conceptualised all aspects of the research for this project 
+* Liased with veterinarians and breeders to collect samples 
+* Extracted genomic DNA from whole blood and buccal swabs
+* Processed and analysed Illumina genotyping array and whole genome sequencing data 
+* Identified candidate genes and variants for FDM 
+* Performed and published a literature review and original manuscript 
+
+#### Outcomes
+
+* Workflow: [Probe Remap workflow](https://github.com/georgiesamaha/ProbeRemap)
+* Publication: [The Burmese cat as a genetic model of type 2 diabetes in humans](https://onlinelibrary.wiley.com/doi/full/10.1111/age.12799)
+* Publication: [Mapping the genetic basis of diabetes mellitus in the Australian Burmese cat (Felis catus)](https://www.nature.com/articles/s41598-020-76166-3)
+
+#### Skills 
+
+* Wet lab, data analysis, project management, verbal and written communication
+* Disciplines: genetics, genomics, bioinformatics
+* Platforms: HPC, RStudio, Excel  
+* Tools: bash, R, python, PBS, GitHub

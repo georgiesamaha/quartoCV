@@ -1,7 +1,33 @@
 ---
 image: "https://user-images.githubusercontent.com/73086054/224530266-7c58a07c-6969-4731-b9d1-bc1b5cbdace3.png"
 about:
-  template: jolla
+    template: trestles
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          url: https://www.linkedin.com/in/georgie-samaha-95095b230/
+        - icon: github
+          text: Github
+          url: https://github.com/georgiesamaha
+        - text: "{{< fa envelope >}} Email"
+          url: mailto:georgiesamaha@gmail.com
+        - text: "{{< ai orcid >}} ORCID 0000-0003-0419-1476"
+          url: https://orcid.org/0000-0003-0419-1476
+comments: false
 ---
 
 I'm a community-focused bioinformatician, working on improving the accessibility of bioinformatics for all life scientists. I prioritise the importance of inter-disciplinary collaboration, effective communication, and transparency in achieving this. I maintain a complementary research practice in animal genomics, with a focus on improving health and conservation outcomes in companion animals and non-model species. 
+
+I'm currently the Bioinformatics Group Lead at the Sydney Informatics Hub, University of Sydney, working with the [Australian BioCommons](https://www.biocommons.org.au/). 
+
+## **Selected projects**
+
+#### Training
+**Decoding Bioinformatics: A Primer For Life Scientists** | [Recording](https://www.youtube.com/watch?v=WehEF-6nq3U)  
+**Unlocking nf-core - customising workflows for your research** | [Materials](https://zenodo.org/records/8026170)   
+**Getting started with WGS mapping and variant calling** | [Recording](https://youtu.be/Q2EceFyizio?si=PSRvpmtI8kUh1BeO) | [Materials]()  
+
+#### Software 
+**GermlineStructuralV-nf** | A structural variant calling workflow | [GitHub](https://github.com/Sydney-Informatics-Hub/Germline-StructuralV-nf)  
+**Template-nf** | A straightforward Nextflow template | [GitHub](https://github.com/Sydney-Informatics-Hub/template-nf) | [Docs](https://sydney-informatics-hub.github.io/Nextflow_DSL2_template_guide/)
+**configBuilder-nf** | A simple custom config file generator | [GitHub](https://github.com/georgiesamaha/configBuilder-nf)

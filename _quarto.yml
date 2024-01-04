@@ -1,5 +1,7 @@
 project:
   type: website
+  #resources: 
+  #  - resume.pdf
   output-dir: docs
 
 website:
@@ -13,8 +15,8 @@ website:
     right:
       - href: about.html
         text: "About"
-      - href: science.html
-        text: "Science"
+      - href: projects.html
+        text: "Projects"
       - href: cv.html
         text: "CV"
       - icon: github
@@ -24,4 +26,6 @@ website:
 
 format:
   html:
-    theme: custom.scss
+    theme: [sandstone, _variables.scss]
+    css: styles.css
+    page-layout: full

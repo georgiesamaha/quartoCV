@@ -1,0 +1,32 @@
+---
+title: "Making bioinformatics workflows accessible"
+image: ../figs/Workflow.png
+---
+
+Working at the command line is challenging for life scientists, many of whom have received no formal computer science training. The Australian BioCommons [Bring Your Own Data platforms project](https://www.biocommons.org.au/byo-data-platform-expansion) is focused on providing the life science community with curated workflows, tools, training and support across Australian command line infrastructures. 
+
+#### My role
+
+* Workflows theme lead
+* Developed public, scalable, reproducible data processing workflows
+* Conceptualised national training events focused on the accessibility of bioinformatics workflows at the command-line 
+* Delivered and facilitated workshops and webinars as a part of the Australian BioCommons training programme
+* Liased with and coordinated activites involving  partners at various computational infrastructures, service providers, research communities across the country
+* Advocated for the needs and interests of the life science community to national computational infrastructures and service providers
+
+#### Outcomes
+
+* Installation and optimisation of bioinformatics workflows across command line infrastructures at NCI, Pawsey, QRIScloud, and the University of Melbourne Research Computing Services
+* Enabled 60 high-impact publications 
+* Supported 11 research groups 
+* Developed 19 public workflows 
+* 1,600 genomes processed at national HPCs
+* 1,000 transcriptomes processed at national HPCs
+* Upskilled 1,000 life scientists
+
+#### Skills 
+
+* Data analysis, software engineering, project management, verbal and written communication
+* Disciplines: bioinformatics
+* Platforms: HPC, cloud, RStudio 
+* Tools: bash, R, python, PBS, SLURM, git, GitHub, Nextflow, Singularity, Docker, sHPC 

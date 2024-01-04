@@ -12,5 +12,19 @@
       "/science/byod.html",
       "/science/cancer.html"
     ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/webinars.html",
+      "/projects/110dogs.html",
+      "/projects/wildcats.html",
+      "/projects/parabricks.html",
+      "/projects/burmese.html",
+      "/projects/nf-template.html",
+      "/projects/structuralV.html",
+      "/projects/byod.html",
+      "/projects/cancer.html"
+    ]
   }
 ]

@@ -1,0 +1,22 @@
+---
+title: "Bioinformatics and high performance computing"
+image: ../figs/HPC.jpg
+---
+
+Bioinformaticians and life scientists are increasingly turning to high performance computing infrastructure and efficient, scalable workflows as their research becomes more data intensive. Accessing and getting the most out of these facilities can be challenging for many of us who have never received formal computational sciences training. This webinar series introduces the high-performance computing facilities and services available to Australian researchers and ways to access and use them to do high impact research. 
+
+#### My role
+
+* Conceptualise and deliver webinars to a national audience 
+
+#### Outcomes
+
+* Webinar: [Where to go when your bioinformatics runs out of compute](https://www.youtube.com/watch?v=hNTbngSc-W0)
+* Webinar: [High performance bioinformatics: submitting your best NCMAS application](https://www.youtube.com/watch?v=HeFGjguwS0Y) 
+* Webinar: [Getting started with mapping and variant calling on the command line](https://www.youtube.com/watch?v=Q2EceFyizio)
+* Webinar: Australian HPCs for bioinformatics 
+
+#### Skills 
+
+* Verbal and written communication 
+* Disciplines: bioinformatics, high performance computing   
