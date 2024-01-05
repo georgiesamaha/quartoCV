@@ -1,0 +1,8 @@
+---
+title: "**Public cloud image for bioinformatics**"
+image: ../figs/bioimage.png
+---
+
+For most bioinformatics applications, working at the command-line interface is unavoidable and empowering. The CLI gives users the power to work more efficiently, use scalable computing resources, and work more reproducibly. Learning how to effectively use the CLI environment can be particilarly challenging for life scienctists who don't receive any formal computer science training. 
+
+To address the challenges of set up and installation, I worked in partnership with Pawsey Supercomputing Research Center and the National Computational Infrastructure to create a purpose built cloud environment to help researchers working on the command-line. It is called the [BioImage](https://www.biocommons.org.au/news/bioimage) and is currently available on [Pawsey's Nimbus cloud platform](https://support.pawsey.org.au/documentation/display/US/Nimbus+for+Bioinformatics). We are currently working on making it available on other public research cloud and commercial cloud platforms.  

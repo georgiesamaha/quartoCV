@@ -1,0 +1,12 @@
+---
+title: "**Evaluating optimised genomics workflows**"
+image: ../figs/Parabricks.png
+---
+
+Genomics-based research is computationally intensive work and we are generating data faster and at a higher scale than ever before. Accelerated computing using specialised hardware is key to addressing these intensive data loads. 
+
+I worked closely with partners from the [National Computational Infrastructure (NCI)](https://nci.org.au/), who were looking to make scalable bioinformatics data processing more accessible at their facilities. We worked with NCI to evaluate the performance of NVIDIA Parabricks software suite at their Gadi HPC and benchmark it against highly optimised CPU-based workflows. GPU-accelerated tools, like Parabricks, are currently rare in bioinformatics but have the capacity to significantly reduce the time and computational resources required for complex data processing like mapping and variant calling. The outcomes of this work includes: 
+
+* A public [biological validation performance evaluation protocol](https://github.com/Sydney-Informatics-Hub/GermlineShortV_biovalidation)
+* A public [report](https://zenodo.org/record/6930814) summarising our findings
+* The availability of NVIDIA Parabricks license at NCI Gadi HPC

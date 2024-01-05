@@ -1,18 +1,6 @@
 
-I lead a team of bioinformaticians and developers and directly support the University of Sydney's life science research community by processing and analysing researcher's data, supporting access to national high performance and cloud computing platforms, and consulting on reproducible research practices and best practice bioinformatics. 
+I lead a team of bioinformaticians and developers at the Sydney Informatics Hub. We directly support the University of Sydney's life science research community by processing and analysing researcher's data, supporting access to national high performance and cloud computing platforms, and consulting on reproducible research practices and best practice bioinformatics. 
 
 I am passionate about making bioinformatics more approachable and accessible for all life scientists. My position is co-funded by the Australian BioCommons and I am the product owner of their BioCLI platforms project. I was previously the co-lead of the Australian BioCommons' ['Bring Your Own Data' command line interface project](https://www.biocommons.org.au/byo-data-platform-expansion), building and supporting the use of reproducible and scalable workflows. 
 
 Previously, I did my PhD under the supervision of Associate Professor Bianca Waud and Professor Claire Wade, at the Unviersity of Sydney. I explored the application and adaptation of genomic techniques and technologies to heritable diseases, population structure, and conservation in cat species. 
-
-#### **Key research interests**
-
-* Companion animal genetics
-* Conservation genetics  
-* Rare heritable diseases 
-* Cancer genomics
-
-#### **Professional affiliations**
-
-* Genetics Society of Australia (GSA)
-* Australian Bioinformatics and Computational Biology Society (ABACBS) 

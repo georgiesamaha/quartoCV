@@ -24,10 +24,10 @@ I'm currently the Bioinformatics Group Lead at the Sydney Informatics Hub, Unive
 
 #### Training
 **Decoding Bioinformatics: A Primer For Life Scientists** | [Recording](https://www.youtube.com/watch?v=WehEF-6nq3U)  
-**Unlocking nf-core - customising workflows for your research** | [Materials](https://zenodo.org/records/8026170)   
-**Getting started with WGS mapping and variant calling** | [Recording](https://youtu.be/Q2EceFyizio?si=PSRvpmtI8kUh1BeO) | [Materials]()  
+**Unlocking nf-core: Customising Workflows For Your Research** | [Materials](https://zenodo.org/records/8026170)   
+**Getting Started With WGS Mapping and Variant Calling** | [Recording](https://youtu.be/Q2EceFyizio?si=PSRvpmtI8kUh1BeO) | [Materials]()  
 
 #### Software 
 **GermlineStructuralV-nf** | A structural variant calling workflow | [GitHub](https://github.com/Sydney-Informatics-Hub/Germline-StructuralV-nf)  
-**Template-nf** | A straightforward Nextflow template | [GitHub](https://github.com/Sydney-Informatics-Hub/template-nf) | [Docs](https://sydney-informatics-hub.github.io/Nextflow_DSL2_template_guide/)
+**Template-nf** | A straightforward Nextflow template | [GitHub](https://github.com/Sydney-Informatics-Hub/template-nf) | [Docs](https://sydney-informatics-hub.github.io/Nextflow_DSL2_template_guide/)  
 **configBuilder-nf** | A simple custom config file generator | [GitHub](https://github.com/georgiesamaha/configBuilder-nf)

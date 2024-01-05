@@ -1,0 +1,20 @@
+---
+title: "**Canine health and population genomics**"
+image: ../figs/Canine.png
+---
+
+This project involved the processing of a large whole genome sequence dataset comprising 113 samples. To process these samples, we developed and applied two highly scalable workflows to realign all samples to a more recent version of the canine reference genome assembly and call short variants (SNVs and indels) across the genome. The scale of the dataset required the use of the National Computational Infrastructure's Gadi high performance computer.  
+
+#### My role
+
+* Developed and integrated processes for non-human samples into an [existing public workflow](https://github.com/Sydney-Informatics-Hub/Fastq-to-BAM)
+* Realigned and called short variants at NCI Gadi 
+* Generated a large-scale multi-breed database of short variants 
+* Onboarded and supported researcher in accessing and using NCI Gadi HPC
+
+#### Outcomes
+
+* Publication: [GWAS for Chronic Superficial Keratitis in the Australian Racing Greyhound](https://www.mdpi.com/2073-4425/13/8/1328)
+* Publication: [De-novo and genome-wide meta-analyses identify a risk haplotype for congenital sensorineural deafness in Dalmatian dogs](https://www.nature.com/articles/s41598-022-19535-4)
+
+

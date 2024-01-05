@@ -1,0 +1,21 @@
+---
+listing:
+  contents: bioinformatics
+  type: grid
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title]
+page-layout: full
+title-block-banner: false
+---
+
+## Bioinformatics tools and platforms
+
+While bioinformatics is an essential part of life science research, the platforms and tools we use to process and analyse our data are not exactly easy to use, no matter how experienced one may be. My involvement in the Australian BioCommons Platforms projects has focused on providing the Australian life science community with: 
+
+* Public scalable data processing workflows optimised for national HPCs 
+* Support in finding and accessing the compute resources they need 
+* Training that builds confidence for beginners who are learning to work on the command-line
+
+### Selected projects
