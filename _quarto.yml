@@ -6,7 +6,7 @@ project:
 
 website:
   title: "Georgie Samaha"
-  #site-url:  
+  site-url: https://georgiesamaha.com/ 
   google-analytics: "G-WHVC6SDX14"
   open-graph: true
   navbar:
