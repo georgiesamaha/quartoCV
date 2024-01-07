@@ -6,8 +6,8 @@ project:
 
 website:
   title: "Georgie Samaha"
-  #site-url: 
-  #google-analytics: ""
+  #site-url:  
+  google-analytics: "G-WHVC6SDX14"
   open-graph: true
   navbar:
     background: primary
@@ -19,8 +19,6 @@ website:
         text: "Bioinformatics"
       - href: research.html
         text: "Research"
-      - href: cv.html
-        text: "CV"
       - icon: github
         href: https://github.com/georgiesamaha
       - icon: linkedin
