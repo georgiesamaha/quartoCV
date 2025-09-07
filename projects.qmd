@@ -1,6 +1,6 @@
 ---
 listing:
-  contents: research
+  contents: projects
   type: grid
   categories: false
   sort-ui: false
@@ -10,5 +10,5 @@ page-layout: full
 title-block-banner: false
 ---
 
-## Research 
-### Selected projects
+## Selected projects
+

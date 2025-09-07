@@ -1,12 +1,9 @@
 project:
   type: website
-  #resources: 
-  #  - resume.pdf
-  output-dir: docs
 
 website:
   title: "Georgie Samaha"
-  site-url: https://georgiesamaha.com/ 
+  site-url: https://georgiesamaha.com/
   google-analytics: "G-WHVC6SDX14"
   open-graph: true
   navbar:
@@ -15,17 +12,26 @@ website:
     right:
       - href: about.html
         text: "About"
-      - href: bioinformatics.html
-        text: "Bioinformatics"
-      - href: research.html
-        text: "Research"
+      - href: projects.html
+        text: "Projects"
+      - href: blog.html
+        text: "Blog"
       - icon: github
         href: https://github.com/georgiesamaha
       - icon: linkedin
         href: https://www.linkedin.com/in/georgie-samaha-95095b230/
+      - text: "<i class='fa-brands fa-orcid fa-lg' aria-hidden='true'></i>"
+        href: "https://orcid.org/0000-0003-0419-1476"
+        aria-label: ORCID
+
 
 format:
   html:
-    theme: [sandstone, _variables.scss]
+    theme: [cosmo, _variables.scss]
     css: styles.css
     page-layout: full
+    backgroundcolor: "#d1d1d1"
+    include-in-header:
+      - text: |
+          <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">

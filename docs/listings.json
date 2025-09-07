@@ -11,16 +11,21 @@
   },
   {
     "listing": "/projects.html",
-    "items": []
+    "items": [
+      "/projects/hpc.html",
+      "/projects/110dogs.html",
+      "/projects/wildcats.html",
+      "/projects/parabricks.html",
+      "/projects/burmese.html",
+      "/projects/nextflow.html",
+      "/projects/cancer.html",
+      "/projects/bioimage.html",
+      "/projects/structuralV.html"
+    ]
   },
   {
     "listing": "/bioinformatics.html",
-    "items": [
-      "/bioinformatics/hpc.html",
-      "/bioinformatics/parabricks.html",
-      "/bioinformatics/nextflow.html",
-      "/bioinformatics/bioimage.html"
-    ]
+    "items": []
   },
   {
     "listing": "/research.html",
