@@ -16,3 +16,33 @@ I've made lots of mistakes in my time doing bioinformatics, many of them have co
 There are many and varied file formats in bioinformatics. Many of them are text-based and can _technically_ be opened in a text editor but are often so large they cannot be opened without crashing your machine. Other file types are binary and cannot be opened in a text editor at all. These days, most tools will handle standard file formats but sometimes you will need to do some manual manipulation to get your data into the right format for a particular tool.
 
 Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you're working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.
+
+---
+toc: true
+toc-depth: 3         # how many heading levels to include
+toc-location: right  # left | right (floating ToC)
+page-layout: article  
+---
+
+# File formats in bioinformatics: FASTA
+
+::: {.callout-note}
+# Learn from my mistakes
+
+I've made lots of mistakes in my time doing bioinformatics, many of them have come down to rushing into analysis without fully understanding the file formats I was working with. 
+:::
+
+There are many and varied file formats in bioinformatics. Many of them are text-based and can _technically_ be opened in a text editor but are often so large they cannot be opened without crashing your machine. Other file types are binary and cannot be opened in a text editor at all. These days, most tools will handle standard file formats but sometimes you will need to do some manual manipulation to get your data into the right format for a particular tool.
+
+Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you're working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.
+
+## BAM
+
+### Contents 
+### Applications 
+
+_1. Reference genomes and transcriptomes_
+
+### Handy one-liners
+
+### Resources 

@@ -1,4 +1,0 @@
----
-title: "**RNAseq analysis for beginners**"
-image: ../figs/rnaseq.jpg
----
