@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -143,7 +177,19 @@ gtag('config', 'G-WHVC6SDX14', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#file-formats-in-bioinformatics-fastq" id="toc-file-formats-in-bioinformatics-fastq" class="nav-link active" data-scroll-target="#file-formats-in-bioinformatics-fastq">File formats in bioinformatics: FASTQ</a></li>
+  <li><a href="#file-formats-in-bioinformatics-fastq" id="toc-file-formats-in-bioinformatics-fastq" class="nav-link active" data-scroll-target="#file-formats-in-bioinformatics-fastq">File formats in bioinformatics: FASTQ</a>
+  <ul>
+  <li><a href="#fastq" id="toc-fastq" class="nav-link" data-scroll-target="#fastq">FASTQ</a>
+  <ul class="collapse">
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a>
+  <ul class="collapse">
+  <li><a href="#sequencing-platform-differences" id="toc-sequencing-platform-differences" class="nav-link" data-scroll-target="#sequencing-platform-differences">Sequencing platform differences</a></li>
+  </ul></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  <li><a href="#handy-one-liners" id="toc-handy-one-liners" class="nav-link" data-scroll-target="#handy-one-liners">Handy one-liners</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -170,8 +216,201 @@ Learn from my mistakes
 </div>
 <p>There are many and varied file formats in bioinformatics. Many of them are text-based and can <em>technically</em> be opened in a text editor but are often so large they cannot be opened without crashing your machine. Other file types are binary and cannot be opened in a text editor at all. These days, most tools will handle standard file formats but sometimes you will need to do some manual manipulation to get your data into the right format for a particular tool.</p>
 <p>Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you’re working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.</p>
+<section id="fastq" class="level2">
+<h2 class="anchored" data-anchor-id="fastq">FASTQ</h2>
+<p>FASTQ is the current default file format for raw sequencing reads (e.g.&nbsp;from Illumina, Nanopore, or PacBio instruments) storage. Unlike FASTA, which stores only sequences and headers, FASTQ also stores <strong>per-base quality scores</strong>, which makes it essential for almost every downstream analysis.</p>
+<section id="contents" class="level3">
+<h3 class="anchored" data-anchor-id="contents">Contents</h3>
+<p>Each sequencing read in a FASTQ file is represented by <strong>four lines</strong>:</p>
+<ol type="1">
+<li>Header line starting with <code>@</code>: contains the read identifier and sometimes instrument metadata.<br>
+</li>
+<li>Sequence line: the raw nucleotide sequence (A, C, G, T, N).<br>
+</li>
+<li>Separator line starting with <code>+</code>: sometimes repeats the header, but often just a <code>+</code>.<br>
+</li>
+<li>Quality score line: encodes per-base sequencing quality, using <a href="https://help.basespace.illumina.com/files-used-by-basespace/quality-scores">ASCII characters</a>.</li>
+</ol>
+<p>Consider this example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@SEQ_ID</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">!</span><span class="st">''</span><span class="ex">*</span><span class="er">((</span>((<span class="op">***+</span>))<span class="op">%%%++</span><span class="kw">)(</span><span class="ex">%%%%</span><span class="kw">)</span><span class="ex">.1***-+*</span><span class="st">''</span><span class="kw">)</span><span class="er">)</span><span class="ex">**55CCF</span><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;</span>CCCCCCC65</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll often see FASTQ files named <code>.fastq</code>, <code>.fq</code>, <code>.fq.gz</code>, or <code>.fastq.gz</code>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 40%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Extension</th>
+<th>Typical usage</th>
+<th>Example source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.fastq</code></td>
+<td>Most common extension</td>
+<td>Illumina NextSeq, HiSeq, NovaSeq data</td>
+</tr>
+<tr class="even">
+<td><code>.fq</code></td>
+<td>Short form, used interchangeably</td>
+<td>Some SRA/ENA downloads</td>
+</tr>
+<tr class="odd">
+<td><code>.fastq.gz</code> or <code>.fq.gz</code></td>
+<td>FASTQ compressed with gzip</td>
+<td>NCBI SRA, ENA, institutional sequencing facilities</td>
+</tr>
+</tbody>
+</table>
+<p>FASTQ files can contain one or many read sequences and are often paired. Sequencing can be run in single-end or paired-end mode. This choice affects how many FASTQ files you receive and how you use them. These days, paired-end sequencing is most common for short and long read technologies. In paired-end sequencing, each DNA fragment is sequenced from both ends, producing two reads per fragment. These reads are stored in separate FASTQ files, often named with <code>_R1</code> for forward reads and <code>_R2</code> for reverse reads to indicate the first and second reads of each pair.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep pairs in sync
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you split, shuffle, or filter one FASTQ file without doing the same to its pair, you’ll break pairing. Many tools will fail outright if R1 and R2 files are out of sync. Those that don’t will give incorrect results. Pairs of FASTQ files represent the same biological sample, they are not replicates.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multiple files per pair
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may be working with more than 2 FASTQ files per sample. This happens when:</p>
+<ol type="1">
+<li>Multiple flowcell lanes are used by the sequencer e.g.&nbsp;on older Illumunia HiSeq machines where flowcells are processed separately. Splitting samples across lanes was performed to reduce technical (lane) bias.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L001_R1_001.fastq.gz</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L002_R1_001.fastq.gz</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L001_R2_001.fastq.gz</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L002_R2_001.fastq.gz</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>File sizes need to be managed because they’re so big: if you’ve chosen to sequence a large genome at a very high depth, you may end up with multiple FASTQ files to better manage the gigabytes data.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_R1_001.fastq.gz</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_R1_002.fastq.gz</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_R2_001.fastq.gz</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_R2_002.fastq.gz</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Seuqencing across multiple runs to increase depth or because of failed runs. These filenames will often include a flowcell ID and you’ll have multiple R1/R2 pairs associated with a different flowcell ID.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L001_R1_001.fastq.gz</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L001_R2_001.fastq.gz</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L002_R1_002.fastq.gz</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sample_S1_L002_R2_002.fastq.gz</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="sequencing-platform-differences" class="level4">
+<h4 class="anchored" data-anchor-id="sequencing-platform-differences">Sequencing platform differences</h4>
+<p>Sequencing platforms output FASTQ files, but the content and conventions differ depending on the technology. The differences mainly come from read length, quality encoding, and the information included in headers.</p>
+<ul>
+<li><a href="https://pacbiofileformats.readthedocs.io/en/13.1/">PacBio FASTQ convetions</a></li>
+<li><a href="https://epi2me.nanoporetech.com/notebooks/Introduction_to_fastq_file.html">Oxford Nanopore FASTQ convetions</a></li>
+<li><a href="https://help.basespace.illumina.com/articles/descriptive/fastq-files/">Illumina FASTQ convetions</a></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 12%">
+<col style="width: 26%">
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Platform</th>
+<th>Read length</th>
+<th>Header style / metadata</th>
+<th>Quality scores</th>
+<th>Common uses</th>
+<th>File naming</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Illumina</strong></td>
+<td>50–300 bp (paired-end)</td>
+<td>Compact IDs: instrument, run, flowcell, lane, tile, x/y, read number (R1/R2)</td>
+<td>Very high (Q30+), Phred+33</td>
+<td>Variant calling, RNAseq, ChIP-seq, metagenomics</td>
+<td>R1/R2 pairs; often split by lane (<code>L001</code>, <code>L002</code>) or chunks (<code>_001</code>, <code>_002</code>)</td>
+</tr>
+<tr class="even">
+<td><strong>PacBio</strong></td>
+<td>10–25 kb HiFi; up to 100 kb subreads</td>
+<td>Movie name, ZMW number, start–end positions</td>
+<td>Consensus accuracy, Q20–Q30 (Phred+33)</td>
+<td>De novo assembly, structural variants, isoform discovery</td>
+<td>One FASTQ per SMRT cell</td>
+</tr>
+<tr class="odd">
+<td><strong>ONT</strong></td>
+<td>Highly variable: 500 bp – &gt;1 Mb</td>
+<td>Rich metadata: UUID, run ID, sample ID, channel, start time</td>
+<td>Lower on average, Phred+33; error profile dominated by indels</td>
+<td>Real-time sequencing, metagenomics, ultra-long reads, structural variants</td>
+<td>Many small FASTQs, often merged before analysis</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<p>FASTQ files can represent many different types of sequencing data across different types of biological material and experimental designs.</p>
+<p><em>1. DNA sequencing</em><br>
+- Whole-genome sequencing (WGS): FASTQs contain DNA reads covering the entire genome. Used for variant discovery, structural variation, genome assembly, and genome resequencing<br>
+- Whole-exome sequencing (WES): FASTQs contain only reads mapping to captured exons. Used for detecting variants in coding regions<br>
+- Targeted panels: FASTQs may contain reads from specific genes or loci (e.g.&nbsp;cancer gene panels, microbial typing assays)</p>
+<p><em>2. RNA sequencing</em><br>
+- Bulk RNAseq: FASTQs contain cDNA reads derived from mRNA, representing gene expression levels across a population of cells<br>
+- Single-cell RNAseq: FASTQs also encode barcodes and UMIs in read structures, linking reads back to individual cells and molecules<br>
+- Long-read RNA-seq (Iso-Seq, ONT direct RNA): FASTQs may contain full-length transcript reads, used for isoform discovery and splicing analysis<br>
+- Small RNA-seq: FASTQs contain very short reads (18–30 nt) from miRNAs, siRNAs, etc., used for regulatory RNA studies</p>
+<p><em>3. Metagenomic sequencing</em><br>
+- FASTQs may contain DNA or RNA reads from complex microbial communities<br>
+- Used for profiling community composition, functional gene annotations, or metagenome assembly<br>
+- Common in microbiome studies, pathogen detection, and environmental sequencing<br>
+- Amplicon sequencing (16S rRNA): FASTQs with targeted PCR products</p>
+<p><em>4. Epigenomics</em><br>
+- ChIP-seq/ATAC-seq: DNA FASTQs representing protein-bound DNA fragments or accessible chromatin regions<br>
+- Bisulfite sequencing: DNA FASTQs encoding methylation patterns through chemical conversion.</p>
+</section>
+<section id="handy-one-liners" class="level3">
+<h3 class="anchored" data-anchor-id="handy-one-liners">Handy one-liners</h3>
+<p>I strongly recommend using dedicated tools such as fastp or seqtk to manipulate and query FASTQ files.</p>
+</section>
+<section id="resources" class="level3">
+<h3 class="anchored" data-anchor-id="resources">Resources</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ wiki</a></li>
+<li><a href="https://www.bioinformatics.org/sms/iupac.html">IUPAC codes for nucleotides and amino acids</a></li>
+<li><a href="https://sapac.illumina.com/science/technology/next-generation-sequencing/plan-experiments/paired-end-vs-single-read.html">Paired-end vs single-end short-read sequencing</a></li>
+<li><a href="https://pacbiofileformats.readthedocs.io/en/13.1/">PacBio FASTQ convetions</a></li>
+<li><a href="https://epi2me.nanoporetech.com/notebooks/Introduction_to_fastq_file.html">Oxford Nanopore FASTQ convetions</a></li>
+<li><a href="https://help.basespace.illumina.com/articles/descriptive/fastq-files/">Illumina FASTQ convetions</a></li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
