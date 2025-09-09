@@ -181,8 +181,8 @@ gtag('config', 'G-WHVC6SDX14', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#fasta" id="toc-fasta" class="nav-link" data-scroll-target="#fasta">FASTA</a>
   <ul class="collapse">
-  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
   <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
   <li><a href="#handy-one-liners" id="toc-handy-one-liners" class="nav-link" data-scroll-target="#handy-one-liners">Handy one-liners</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
@@ -215,13 +215,7 @@ Learn from my mistakes
 <p>Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you’re working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.</p>
 <section id="fasta" class="level2">
 <h2 class="anchored" data-anchor-id="fasta">FASTA</h2>
-<p>Lets start simple. Lots of people’s first introduction to bioinformatics will involve a FASTA file.</p>
-<section id="applications" class="level3">
-<h3 class="anchored" data-anchor-id="applications">Applications</h3>
-<p><em>1. Reference genomes and transcriptomes</em></p>
-<p><em>2. Databases for sequence searches</em></p>
-<p><em>3. Phylogenetic multiple sequence alignments</em></p>
-</section>
+<p>Lets start simple. Lots of people’s first introduction to bioinformatics will involve working with some sequence in a FASTA file.</p>
 <section id="contents" class="level3">
 <h3 class="anchored" data-anchor-id="contents">Contents</h3>
 <p>Biological sequences (DNA, RNA or protein) and some metadata. Each entry has 2 parts:</p>
@@ -229,7 +223,8 @@ Learn from my mistakes
 <li>Header line starting with &gt;</li>
 <li>Sequence line(s)</li>
 </ol>
-<p>Consider this example of a protein FASTA entry:</p>
+<p>Everything after the <code>&gt;</code> on the header line is free text, many projects use this to store metadata about the sequence. The exact format of this metadata can vary between databases and tools, but it often includes an identifier, a description, and sometimes additional information like the organism name or gene name.</p>
+<p>Consider <a href="https://www.ncbi.nlm.nih.gov/gene/554339">this example</a> of a protein FASTA entry:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>NP_001036025.2 <span class="ex">TYRP1</span> [organism=Felis catus] <span class="pp">[</span><span class="ss">GeneID=554339</span><span class="pp">]</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MKAHKFLSLGYIVLPLLCSPQTWAQFPRQCATVEALRNGVCCPDLSPLSGPGTDRCGSSSGRGRCEAVTA</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DSRPHSLHYPHDGRDDREAWPTRFFNRTCRCNGNFSGHNCGTCRPGWKGAACDQRVLIVRRNLLDLSAEE</span></span>
@@ -276,22 +271,75 @@ Learn from my mistakes
 </tr>
 </tbody>
 </table>
+<p>FASTA files can contain one or many sequences. When a FASTA file contains multiple sequences, each sequence entry starts with its own header line beginning with the <code>&gt;</code> character, followed by the corresponding sequence lines:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>sp<span class="kw">|</span><span class="ex">P57073</span><span class="kw">|</span><span class="ex">SOX8_HUMAN</span> Transcription factor SOX-8 OS=Homo sapiens OX=9606 GN=SOX8 PE=1 SV=1</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MLDMSEARSQPPCSPSGTASSMSHVEDSDSDAPPSPAGSEGLGRAGVAVGGARGDPAEAA</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DERFPACIRDAVSQVLKGYDWSLVPMPVRGGGGGALKAKPHVKRPMNAFMVWAQAARRKL</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ADQYPHLHNAELSKTLGKLWRLLSESEKRPFVEEAERLRVQHKKDHPDYKYQPRRRKSAK</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">AGHSDSDSGAELGPHPGGGAVYKAEAGLGDGHHHGDHTGQTHGPPTPPTTPKTELQQAGA</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">KPELKLEGRRPVDSGRQNIDFSNVDISELSSEVMGTMDAFDVHEFDQYLPLGGPAPPEPG</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">QAYGGAYFHAGASPVWAHKSAPSASASPTETGPPRPHIKTEQPSPGHYGDQPRGSPDYGS</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">CSGQSSATPAAPAGPFAGSQGDYGDLQASSYYGAYPGYAPGLYQYPCFHSPRRPYASPLL</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">NGLALPPAHSPTSHWDQPVYTTLTRP</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>SOX8_p.Leu102fs</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">MLDMSEARSQPPCSPSGTASSMSHVEDSDSDAPPSPAGSEGLGRAGVAVGGARGDPAEAA</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">DERFPACIRDAVSQVLKGYDWSLVPMPVRGGGGGALKAKPHVKRLLTRSRRL*</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A note on line wrapping
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The sequence part of a FASTA can be wrapped at a fixed width (commonly 60 or 80 characters per line) or left unwrapped as one long line. Most tools don’t mind either style, but remember that line breaks are not biologically meaningful.</p>
+</div>
+</div>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<p><em>1. Reference genomes and transcriptomes</em></p>
+<p>Large FASTA files containing the complete DNA or RNA sequence of an organism are often the starting point for nearly every reference-based genomic analysis.</p>
+<p>Unless you’re working with a non-model organism without a publicly available reference assembly, you will be able to find these FASTA files for your organism of interest in a public database such as <a href="https://www.ncbi.nlm.nih.gov/">NCBI</a>, <a href="https://ensembl.org">Ensembl</a>, or <a href="https://genome.ucsc.edu/">UCSC</a>.</p>
+<p>Given the size of reference assemblies, tools often require you to index them before use. This is a one-time operation that creates additional files to allow the software to quickly look-up specific parts of the reference sequence. The exact command to run and index files required will vary between tools.</p>
+<ul>
+<li><a href="https://asia.ensembl.org/info/data/ftp/index.html">Ensembl FTP download site</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/genome/">NCBI genome download portal</a></li>
+<li><a href="http://hgdownload.soe.ucsc.edu/downloads.html">UCSC genome download site</a></li>
+</ul>
+<p><em>2. Databases for sequence searches</em></p>
+<p>Thi is likely the most common way people first use a FASTA file. Sequence comparison tools (e.g.&nbsp;BLAST and HMMER) require FASTA input for both the query sequence (the sequence you want to investigate) and the reference database (the collection of known sequences to compare against).</p>
+<p>You may use reference sequences for a specific gene or protein, create a database of multiple sequences, or create a custom sequence that includes some change to a wild type sequence (e.g.&nbsp;a mutation).</p>
+<p><em>3. Phylogenetic multiple sequence alignments</em></p>
+<p>If you’re studying the evolutionary relationships between sequences, you might use a FASTA file to store a multiple sequence alignment (MSA). MSAs are used to identify conserved regions, infer evolutionary relationships, and construct phylogenetic trees.</p>
+<p>There are some specialised formats for the application of FASTA files in this context. For example, gaps are represented with the dash (<code>-</code>) character to indicate insertions or deletions in the alignment. Sequences may be padded with gaps so they have equal length and residues may be uppercase or lowercase to indicate confidence in the alignment.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Multiple_sequence_alignment">MSA wiki</a></li>
+</ul>
 </section>
 <section id="handy-one-liners" class="level3">
 <h3 class="anchored" data-anchor-id="handy-one-liners">Handy one-liners</h3>
+<p>Have a go at this tutorial on Sandbox.bio for <a href="https://sandbox.bio/tutorials/seqkit-intro">wrangling FASTA files</a>.</p>
 <p>Count the total number of sequences:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extract the headers:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the lengths of each sequence:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'/^&gt;/ {if (seqlen){print seqlen}; seqlen=0; next} {seqlen += length($0)} END{print seqlen}'</span> my.fasta  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'/^&gt;/ {if (seqlen){print seqlen}; seqlen=0; next} {seqlen += length($0)} END{print seqlen}'</span> my.fasta  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Split a multi-sequence FASTA into individual FASTA files:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'/^&gt;/{s=++d".fa"} {print &gt; s}'</span> my.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="resources" class="level3">
 <h3 class="anchored" data-anchor-id="resources">Resources</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/FASTA_format">FASTA wiki</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/genbank/fastaformat/">FASTA file standard</a></li>
-<li><a href="https://github.com/gencorefacility/reform">Edit FASTA files reliably</a></li>
+<li><a href="https://github.com/lh3/seqtk">Seqtk for parsing FASTA files</a></li>
+<li><a href="https://github.com/gencorefacility/reform">Edit FASTA files reliably with reform</a></li>
+<li><a href="https://www.bioinformatics.org/sms/iupac.html">IUPAC codes for nucleotides and amino acids</a></li>
+<li><a href="https://sandbox.bio/tutorials/seqkit-intro">Sandbox.bio FASTA tutorial</a></li>
 </ul>
 
 

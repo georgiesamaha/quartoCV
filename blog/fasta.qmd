@@ -19,15 +19,7 @@ Here, I explain some common file formats and things to consider when working wit
 
 ## FASTA
 
-Lets start simple. Lots of people's first introduction to bioinformatics will involve a FASTA file. 
-
-### Applications 
-
-_1. Reference genomes and transcriptomes_
-
-_2. Databases for sequence searches_
-
-_3. Phylogenetic multiple sequence alignments_
+Lets start simple. Lots of people's first introduction to bioinformatics will involve working with some sequence in a FASTA file. 
 
 ### Contents 
 
@@ -36,7 +28,9 @@ Biological sequences (DNA, RNA or protein) and some metadata. Each entry has 2 p
 1. Header line starting with >
 2. Sequence line(s)
 
-Consider this example of a protein FASTA entry:
+Everything after the `>` on the header line is free text, many projects use this to store metadata about the sequence. The exact format of this metadata can vary between databases and tools, but it often includes an identifier, a description, and sometimes additional information like the organism name or gene name. 
+
+Consider [this example](https://www.ncbi.nlm.nih.gov/gene/554339) of a protein FASTA entry:
 
 ```bash
 >NP_001036025.2 TYRP1 [organism=Felis catus] [GeneID=554339]
@@ -59,8 +53,59 @@ FASTA files don't have a strict extension requirement but you'll often see them 
 | `.faa`    | “FASTA amino acids” (protein sequences)| UniProt/RefSeq protein databases              |
 | `.fna`    | “FASTA nucleic acids” (DNA/RNA)        | NCBI RefSeq nucleotide FASTAs                 |
 
+FASTA files can contain one or many sequences. When a FASTA file contains multiple sequences, each sequence entry starts with its own header line beginning with the `>` character, followed by the corresponding sequence lines:
+
+```bash
+>sp|P57073|SOX8_HUMAN Transcription factor SOX-8 OS=Homo sapiens OX=9606 GN=SOX8 PE=1 SV=1
+MLDMSEARSQPPCSPSGTASSMSHVEDSDSDAPPSPAGSEGLGRAGVAVGGARGDPAEAA
+DERFPACIRDAVSQVLKGYDWSLVPMPVRGGGGGALKAKPHVKRPMNAFMVWAQAARRKL
+ADQYPHLHNAELSKTLGKLWRLLSESEKRPFVEEAERLRVQHKKDHPDYKYQPRRRKSAK
+AGHSDSDSGAELGPHPGGGAVYKAEAGLGDGHHHGDHTGQTHGPPTPPTTPKTELQQAGA
+KPELKLEGRRPVDSGRQNIDFSNVDISELSSEVMGTMDAFDVHEFDQYLPLGGPAPPEPG
+QAYGGAYFHAGASPVWAHKSAPSASASPTETGPPRPHIKTEQPSPGHYGDQPRGSPDYGS
+CSGQSSATPAAPAGPFAGSQGDYGDLQASSYYGAYPGYAPGLYQYPCFHSPRRPYASPLL
+NGLALPPAHSPTSHWDQPVYTTLTRP
+>SOX8_p.Leu102fs
+MLDMSEARSQPPCSPSGTASSMSHVEDSDSDAPPSPAGSEGLGRAGVAVGGARGDPAEAA
+DERFPACIRDAVSQVLKGYDWSLVPMPVRGGGGGALKAKPHVKRLLTRSRRL* 
+```
+::: {.callout-warning}
+# A note on line wrapping
+
+The sequence part of a FASTA can be wrapped at a fixed width (commonly 60 or 80 characters per line) or left unwrapped as one long line. Most tools don’t mind either style, but remember that line breaks are not biologically meaningful.
+:::
+
+### Applications 
+
+_1. Reference genomes and transcriptomes_
+
+Large FASTA files containing the complete DNA or RNA sequence of an organism are often the starting point for nearly every reference-based genomic analysis. 
+
+Unless you're working with a non-model organism without a publicly available reference assembly, you will be able to find these FASTA files for your organism of interest in a public database such as [NCBI](https://www.ncbi.nlm.nih.gov/), [Ensembl](https://ensembl.org), or [UCSC](https://genome.ucsc.edu/).
+
+Given the size of reference assemblies, tools often require you to index them before use. This is a one-time operation that creates additional files to allow the software to quickly look-up specific parts of the reference sequence. The exact command to run and index files required will vary between tools. 
+
+* [Ensembl FTP download site](https://asia.ensembl.org/info/data/ftp/index.html)
+* [NCBI genome download portal](https://www.ncbi.nlm.nih.gov/genome/)
+* [UCSC genome download site](http://hgdownload.soe.ucsc.edu/downloads.html)
+
+_2. Databases for sequence searches_
+
+Thi is likely the most common way people first use a FASTA file. Sequence comparison tools (e.g. BLAST and HMMER) require FASTA input for both the query sequence (the sequence you want to investigate) and the reference database (the collection of known sequences to compare against).
+
+You may use reference sequences for a specific gene or protein, create a database of multiple sequences, or create a custom sequence that includes some change to a wild type sequence (e.g. a mutation). 
+
+_3. Phylogenetic multiple sequence alignments_
+
+If you're studying the evolutionary relationships between sequences, you might use a FASTA file to store a multiple sequence alignment (MSA). MSAs are used to identify conserved regions, infer evolutionary relationships, and construct phylogenetic trees.
+
+There are some specialised formats for the application of FASTA files in this context. For example, gaps are represented with the dash (`-`) character to indicate insertions or deletions in the alignment. Sequences may be padded with gaps so they have equal length and residues may be uppercase or lowercase to indicate confidence in the alignment.
+
+* [MSA wiki](https://en.wikipedia.org/wiki/Multiple_sequence_alignment)
 
 ### Handy one-liners
+
+Have a go at this tutorial on Sandbox.bio for [wrangling FASTA files](https://sandbox.bio/tutorials/seqkit-intro).
 
 Count the total number of sequences:
 
@@ -80,9 +125,17 @@ Get the lengths of each sequence:
 awk '/^>/ {if (seqlen){print seqlen}; seqlen=0; next} {seqlen += length($0)} END{print seqlen}' my.fasta  
 ```
 
+Split a multi-sequence FASTA into individual FASTA files:
+
+```bash
+awk '/^>/{s=++d".fa"} {print > s}' my.fa
+```
+
 ### Resources 
 
 * [FASTA wiki](https://en.wikipedia.org/wiki/FASTA_format)
 * [FASTA file standard](https://www.ncbi.nlm.nih.gov/genbank/fastaformat/)
-* [Edit FASTA files reliably](https://github.com/gencorefacility/reform)
-
+* [Seqtk for parsing FASTA files](https://github.com/lh3/seqtk)
+* [Edit FASTA files reliably with reform](https://github.com/gencorefacility/reform)
+* [IUPAC codes for nucleotides and amino acids](https://www.bioinformatics.org/sms/iupac.html)
+* [Sandbox.bio FASTA tutorial](https://sandbox.bio/tutorials/seqkit-intro)
