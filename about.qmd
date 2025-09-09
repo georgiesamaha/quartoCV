@@ -1,3 +1,5 @@
-I work at the Sydney Informatics Hub, University of Sydney, and Australian BioCommons, directly supporting Australian researchers by developing open-source tools and solutions and consulting on reproducible research practices and best-practice bioinformatics.
+I work at the [Sydney Informatics Hub](https://www.sydney.edu.au/research/facilities/sydney-informatics-hub/our-staff.html), University of Sydney, and [Australian BioCommons](https://www.biocommons.org.au/team), directly supporting Australian researchers by developing open-source tools and solutions and consulting on reproducible research practices and best-practice bioinformatics.
 
-I am the product owner for the Australian BioCommons' [BioCLI](https://www.biocommons.org.au/biocli) and University of Sydney's Sydney Research Cloud projects. My interest lies in making computing infrastructure and bioinformatics methods more approachable, particularly for life scientists who are new to compute-based research. 
+I am the product owner for the Australian BioCommons' [BioCLI](https://www.biocommons.org.au/biocli) and University of Sydney's Sydney Research Cloud projects. My interest lies in making computing infrastructure and bioinformatics methods more approachable, particularly for life scientists who are new to compute-based research.
+
+I completed a PhD in mammalian genomics under the supervision of Associate Professor Bianca Waud and Professor Claire Wade. My research focused on applying genomic technologies to understand the genetic basis of complex traits in wild felids and domestic cats.  

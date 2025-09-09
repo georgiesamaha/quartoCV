@@ -1,0 +1,88 @@
+---
+toc: true
+toc-depth: 3         # how many heading levels to include
+toc-location: right  # left | right (floating ToC)
+page-layout: article  
+---
+
+# File formats in bioinformatics: FASTA
+
+::: {.callout-note}
+# Learn from my mistakes
+
+I've made lots of mistakes in my time doing bioinformatics, many of them have come down to rushing into analysis without fully understanding the file formats I was working with. 
+:::
+
+There are many and varied file formats in bioinformatics. Many of them are text-based and can _technically_ be opened in a text editor but are often so large they cannot be opened without crashing your machine. Other file types are binary and cannot be opened in a text editor at all. These days, most tools will handle standard file formats but sometimes you will need to do some manual manipulation to get your data into the right format for a particular tool.
+
+Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you're working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.
+
+## FASTA
+
+Lets start simple. Lots of people's first introduction to bioinformatics will involve a FASTA file. 
+
+### Applications 
+
+_1. Reference genomes and transcriptomes_
+
+_2. Databases for sequence searches_
+
+_3. Phylogenetic multiple sequence alignments_
+
+### Contents 
+
+Biological sequences (DNA, RNA or protein) and some metadata. Each entry has 2 parts: 
+
+1. Header line starting with >
+2. Sequence line(s)
+
+Consider this example of a protein FASTA entry:
+
+```bash
+>NP_001036025.2 TYRP1 [organism=Felis catus] [GeneID=554339]
+MKAHKFLSLGYIVLPLLCSPQTWAQFPRQCATVEALRNGVCCPDLSPLSGPGTDRCGSSSGRGRCEAVTA
+DSRPHSLHYPHDGRDDREAWPTRFFNRTCRCNGNFSGHNCGTCRPGWKGAACDQRVLIVRRNLLDLSAEE
+KNHLVQALHLAKRTMHPQFVIATRRSEEILGPDGNTPQFENISIYNYFVWTHYYSVKKTFLGPGQESFGE
+VDFSHEGPAFLTWHRYHLLQLERDMQEMLQDPSFSLPYWNFATGKNICDICTDDLMGSRSNFDPTLISLN
+SVFSQWRVVCESLEDYDTLGTLCNSTEGGPIRRNPAGNVARPMVQRLPEPQDVAQCLEVGLFDTPPFYSN
+STNSFRNTVEGYSDPTGKYDPAIRSLHNLAHLFLNGTGGQTHLSPNDPIFVLLHTFTDAVFDEWLRRYNA
+DVSTFPLENAPIGHNRQYNMVPFWPPVTNIEMFVTAPDNLGYTYEVQWPSRNFSISELVTIGVVAALSLV
+AVIFAGASCMIRARSNMDEAHQPLLTDQYQHYAEEYEKMHNPNQSMV
+```
+
+FASTA files don't have a strict extension requirement but you'll often see them named `.fasta`, `.fa`, `.fna`, or `.faa`. Most tools will accept any extension as long as the file is formatted correctly.
+
+| Extension | Typical usage                          | Example source                                |
+|-----------|----------------------------------------|-----------------------------------------------|
+| `.fasta`  | Most common extension                  | NCBI RefSeq genome assemblies                 |
+| `.fa`     | Short form, often used for genomes     | Ensembl genome FASTAs                         |
+| `.faa`    | “FASTA amino acids” (protein sequences)| UniProt/RefSeq protein databases              |
+| `.fna`    | “FASTA nucleic acids” (DNA/RNA)        | NCBI RefSeq nucleotide FASTAs                 |
+
+
+### Handy one-liners
+
+Count the total number of sequences:
+
+```bash
+grep -c "^>" my.fasta
+```
+
+Extract the headers:
+
+```bash
+grep "^>" my.fasta
+```
+
+Get the lengths of each sequence:
+
+```bash
+awk '/^>/ {if (seqlen){print seqlen}; seqlen=0; next} {seqlen += length($0)} END{print seqlen}' my.fasta  
+```
+
+### Resources 
+
+* [FASTA wiki](https://en.wikipedia.org/wiki/FASTA_format)
+* [FASTA file standard](https://www.ncbi.nlm.nih.gov/genbank/fastaformat/)
+* [Edit FASTA files reliably](https://github.com/gencorefacility/reform)
+

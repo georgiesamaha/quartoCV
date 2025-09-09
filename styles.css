@@ -1,1 +1,26 @@
 /* css styles */
+/* Note callouts */
+.callout-note {
+  background-color: #ffffff !important; /* white body */
+}
+
+/* Warning callouts */
+.callout-warning {
+  background-color: #ffffff !important; /* white body */
+}
+
+/* Header bar */
+.callout-note .callout-header { /* white header */
+  color: #1C260D !important;            /* make "Note" text green */
+}
+
+/* Icon inside the header */
+.callout-note .callout-header .callout-icon {
+  color: #1C260D !important;            /* green icon */
+}
+
+/* Green underline for H2 headers */
+h2 {
+  border-bottom: 1px solid #1C260D !important; /* green underline */
+  padding-bottom: 0.3em;                       /* keep spacing tidy */
+}

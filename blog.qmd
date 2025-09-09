@@ -1,0 +1,13 @@
+---
+listing:
+  contents: blog
+  type: grid
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title]
+page-layout: full
+title-block-banner: false
+---
+
+Becoming a good bioinformatician is all about practice. You need to get your hands dirty, make mistakes, and learn from them. I use this blog to track my learnings and mistakes. 

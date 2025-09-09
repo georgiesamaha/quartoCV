@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Georgie Samaha - Bioinformatics and HPC training</title>
+<title>Georgie Samaha</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -79,9 +113,8 @@ gtag('config', 'G-WHVC6SDX14', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Georgie Samaha - Bioinformatics and HPC training">
+<meta property="og:title" content="Georgie Samaha">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://georgiesamaha.com/figs/HPC.jpg">
 <meta property="og:site_name" content="Georgie Samaha">
 </head>
 
@@ -136,41 +169,135 @@ gtag('config', 'G-WHVC6SDX14', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#file-formats-in-bioinformatics-fasta" id="toc-file-formats-in-bioinformatics-fasta" class="nav-link active" data-scroll-target="#file-formats-in-bioinformatics-fasta">File formats in bioinformatics: FASTA</a>
+  <ul class="collapse">
+  <li><a href="#fasta" id="toc-fasta" class="nav-link" data-scroll-target="#fasta">FASTA</a>
+  <ul class="collapse">
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a></li>
+  <li><a href="#handy-one-liners" id="toc-handy-one-liners" class="nav-link" data-scroll-target="#handy-one-liners">Handy one-liners</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><strong>Bioinformatics and HPC training</strong></h1>
+
+
+
+<section id="file-formats-in-bioinformatics-fasta" class="level1">
+<h1>File formats in bioinformatics: FASTA</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Bioinformaticians and life scientists are increasingly turning to high performance computing infrastructure and efficient, scalable workflows as their research becomes more data intensive. Accessing and getting the most out of these facilities can be challenging for many of us who have never received formal computational sciences training. This webinar series I designed and delivered with colleagues across national computational infrastructure providers introduces the high-performance computing facilities and services available to Australian researchers and ways to access and use them to do high impact research.</p>
+<div class="callout-title-container flex-fill">
+Learn from my mistakes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I’ve made lots of mistakes in my time doing bioinformatics, many of them have come down to rushing into analysis without fully understanding the file formats I was working with.</p>
+</div>
+</div>
+<p>There are many and varied file formats in bioinformatics. Many of them are text-based and can <em>technically</em> be opened in a text editor but are often so large they cannot be opened without crashing your machine. Other file types are binary and cannot be opened in a text editor at all. These days, most tools will handle standard file formats but sometimes you will need to do some manual manipulation to get your data into the right format for a particular tool.</p>
+<p>Here, I explain some common file formats and things to consider when working with them. These things are very easy to forget unless you’re working with these file regularly. Others have explained this better than I can, so I will link to other resources where possible.</p>
+<section id="fasta" class="level2">
+<h2 class="anchored" data-anchor-id="fasta">FASTA</h2>
+<p>Lets start simple. Lots of people’s first introduction to bioinformatics will involve a FASTA file.</p>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<p><em>1. Reference genomes and transcriptomes</em></p>
+<p><em>2. Databases for sequence searches</em></p>
+<p><em>3. Phylogenetic multiple sequence alignments</em></p>
+</section>
+<section id="contents" class="level3">
+<h3 class="anchored" data-anchor-id="contents">Contents</h3>
+<p>Biological sequences (DNA, RNA or protein) and some metadata. Each entry has 2 parts:</p>
+<ol type="1">
+<li>Header line starting with &gt;</li>
+<li>Sequence line(s)</li>
+</ol>
+<p>Consider this example of a protein FASTA entry:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>NP_001036025.2 <span class="ex">TYRP1</span> [organism=Felis catus] <span class="pp">[</span><span class="ss">GeneID=554339</span><span class="pp">]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">MKAHKFLSLGYIVLPLLCSPQTWAQFPRQCATVEALRNGVCCPDLSPLSGPGTDRCGSSSGRGRCEAVTA</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DSRPHSLHYPHDGRDDREAWPTRFFNRTCRCNGNFSGHNCGTCRPGWKGAACDQRVLIVRRNLLDLSAEE</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">KNHLVQALHLAKRTMHPQFVIATRRSEEILGPDGNTPQFENISIYNYFVWTHYYSVKKTFLGPGQESFGE</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">VDFSHEGPAFLTWHRYHLLQLERDMQEMLQDPSFSLPYWNFATGKNICDICTDDLMGSRSNFDPTLISLN</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">SVFSQWRVVCESLEDYDTLGTLCNSTEGGPIRRNPAGNVARPMVQRLPEPQDVAQCLEVGLFDTPPFYSN</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">STNSFRNTVEGYSDPTGKYDPAIRSLHNLAHLFLNGTGGQTHLSPNDPIFVLLHTFTDAVFDEWLRRYNA</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">DVSTFPLENAPIGHNRQYNMVPFWPPVTNIEMFVTAPDNLGYTYEVQWPSRNFSISELVTIGVVAALSLV</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">AVIFAGASCMIRARSNMDEAHQPLLTDQYQHYAEEYEKMHNPNQSMV</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>FASTA files don’t have a strict extension requirement but you’ll often see them named <code>.fasta</code>, <code>.fa</code>, <code>.fna</code>, or <code>.faa</code>. Most tools will accept any extension as long as the file is formatted correctly.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 40%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Extension</th>
+<th>Typical usage</th>
+<th>Example source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.fasta</code></td>
+<td>Most common extension</td>
+<td>NCBI RefSeq genome assemblies</td>
+</tr>
+<tr class="even">
+<td><code>.fa</code></td>
+<td>Short form, often used for genomes</td>
+<td>Ensembl genome FASTAs</td>
+</tr>
+<tr class="odd">
+<td><code>.faa</code></td>
+<td>“FASTA amino acids” (protein sequences)</td>
+<td>UniProt/RefSeq protein databases</td>
+</tr>
+<tr class="even">
+<td><code>.fna</code></td>
+<td>“FASTA nucleic acids” (DNA/RNA)</td>
+<td>NCBI RefSeq nucleotide FASTAs</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="handy-one-liners" class="level3">
+<h3 class="anchored" data-anchor-id="handy-one-liners">Handy one-liners</h3>
+<p>Count the total number of sequences:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Extract the headers:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^&gt;"</span> my.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the lengths of each sequence:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'/^&gt;/ {if (seqlen){print seqlen}; seqlen=0; next} {seqlen += length($0)} END{print seqlen}'</span> my.fasta  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="resources" class="level3">
+<h3 class="anchored" data-anchor-id="resources">Resources</h3>
 <ul>
-<li>Webinar: <a href="https://www.youtube.com/watch?v=YKJDRXCmGMo">Pro tips for scaling bioinformatics workflows for HPC</a></li>
-<li>Webinar: <a href="https://www.youtube.com/watch?v=hNTbngSc-W0">Where to go when your bioinformatics runs out of compute</a></li>
-<li>Webinar: <a href="https://www.youtube.com/watch?v=HeFGjguwS0Y">High performance bioinformatics: submitting your best NCMAS application</a></li>
-<li>Webinar: <a href="https://www.youtube.com/watch?v=Q2EceFyizio">Getting started with mapping and variant calling on the command line</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FASTA_format">FASTA wiki</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/genbank/fastaformat/">FASTA file standard</a></li>
+<li><a href="https://github.com/gencorefacility/reform">Edit FASTA files reliably</a></li>
 </ul>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
