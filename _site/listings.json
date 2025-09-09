@@ -2,15 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/blog/cohort-eda.html",
-      "/blog/bam.html",
+      "/blog/bash.html",
       "/blog/fasta.html",
-      "/blog/fastq.html",
-      "/blog/pdb.html",
-      "/blog/vcf.html",
-      "/blog/structural-bio.html",
-      "/blog/training.html",
-      "/blog/structural-variants.html"
+      "/blog/fastq.html"
     ]
   },
   {

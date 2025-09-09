@@ -1,8 +1,0 @@
----
-toc: true
-toc-depth: 3         # how many heading levels to include
-toc-location: right  # left | right (floating ToC)
-page-layout: article  
----
-
-# File formats in bioinformatics: VCF
