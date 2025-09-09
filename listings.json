@@ -1,0 +1,30 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/cohort-eda.html",
+      "/blog/bam.html",
+      "/blog/fasta.html",
+      "/blog/fastq.html",
+      "/blog/pdb.html",
+      "/blog/vcf.html",
+      "/blog/structural-bio.html",
+      "/blog/training.html",
+      "/blog/structural-variants.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/hpc.html",
+      "/projects/110dogs.html",
+      "/projects/wildcats.html",
+      "/projects/parabricks.html",
+      "/projects/burmese.html",
+      "/projects/nextflow.html",
+      "/projects/cancer.html",
+      "/projects/bioimage.html",
+      "/projects/structuralV.html"
+    ]
+  }
+]
